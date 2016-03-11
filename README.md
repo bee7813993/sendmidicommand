@@ -1,0 +1,2 @@
+# sendmidicommand
+midiデバイスに対してコマンドを送るコマンドラインでコマンド
