@@ -49,6 +49,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	/* Option check */
 	if (argc < 2){
 		_tprintf(usage);
+		_tprintf(_T("\n"));
 		printdevicelist();
 		return 1;
 	}
@@ -57,10 +58,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	for (i = 0; i < 127; i++) {
 		if ((i + 2)  >= (argc)) break;
-		byMIDIMessage[i] = atoi((const char*)argv[i + 2]);
+		long value = _tcstol(argv[i + 2],NULL,0);
+		byMIDIMessage[i] = (unsigned char)value;
 		byMIDIMessage[i+1] = 0;
 	}
-	msglen = i - 1;
+	msglen = i ;
 
 	printcommandlost(byMIDIMessage, msglen);
 
